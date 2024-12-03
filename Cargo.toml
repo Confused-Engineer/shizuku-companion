@@ -1,0 +1,24 @@
+[package]
+name = "shizuku-companion"
+version = "0.1.0"
+authors = ["Confused Engineer"]
+edition = "2021"
+build = "build.rs"
+
+[dependencies]
+windows-service = "0.7.0"
+rusb = "0.9"
+davids-standard-library = {git = "https://github.com/Confused-Engineer/davids-standard-library.git" }
+
+[build-dependencies]
+winres = "0.1"
+static_vcruntime = "2.0"
+
+[profile.release]
+lto = "fat"
+strip = "symbols"
+codegen-units = 1
+
+[[bin]]
+name = "shizuku"
+path = "src/main.rs"
