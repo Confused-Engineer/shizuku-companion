@@ -6,7 +6,7 @@ jobs:
 
   build_windows_exe:
     name: Build Windows Installer
-    runs-on: windows
+    runs-on: Windows
     steps:
       - uses: actions/checkout@v4
       - name: build
@@ -35,7 +35,7 @@ jobs:
 
   publish_release:
     name: Publish Files
-    runs-on: windows
+    runs-on: Windows
     needs: ["build_windows_exe"]
     steps:
       - name: Checkout
