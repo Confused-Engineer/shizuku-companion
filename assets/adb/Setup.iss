@@ -55,6 +55,7 @@ Filename: {sys}\sc.exe; Parameters: "start shizuku"; Flags: runhidden
 [UninstallRun]
 Filename: {sys}\sc.exe; Parameters: "stop shizuku" ; Flags: runhidden ; RunOnceId: "stopsvc" 
 Filename: {sys}\sc.exe; Parameters: "delete shizuku" ; Flags: runhidden ; RunOnceId: "rmvsvc"
+Filename: {app}\adb.exe; Parameters: "kill-server" ; Flags: runhidden ; RunOnceId: "rmvadb"
 
 [UninstallDelete]
 Type: files; Name: "{app}\devices"
