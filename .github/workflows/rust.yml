@@ -1,0 +1,60 @@
+on: [push]
+
+name: Rust-Release-Nightly
+
+jobs:
+
+  build_windows_exe:
+    name: Build Windows Installer
+    runs-on: windows
+    steps:
+      - uses: actions/checkout@v4
+      - name: build
+        run: |
+          cargo build --release
+          Copy-Item -Path ".\target\release\shizuku.exe" -Destination ".\assets\adb\"
+          Start-Process -FilePath "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" -ArgumentList @(".\assets\adb\Setup.iss") -NoNewWindow -Wait
+
+          
+
+      - name: Temporarily Save File
+        uses: actions/upload-artifact@v4
+        with:
+          name: exe
+          path: ./assets/adb/Output/shizuku_setup.exe
+          retention-days: 1
+      
+      - name: cleanup
+        run: |
+          cargo clean
+          Remove-Item ".\assets\adb\shizuku.exe"
+          Remove-Item ".\assets\adb\Output" -Recurse -Force  
+
+
+
+
+  publish_release:
+    name: Publish Files
+    runs-on: windows
+    needs: ["build_windows_exe"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Get Files
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+          merge-multiple: true
+
+      - uses: "ModeSevenIndustrialSolutions/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "nightly"
+          prerelease: true
+          title: "Dev Build"
+          files: |
+            ./artifacts/shizuku_setup.exe
+
+
+
