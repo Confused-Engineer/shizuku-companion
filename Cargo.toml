@@ -3,7 +3,7 @@ name = "shizuku-companion"
 version = "0.1.0"
 authors = ["Confused Engineer"]
 edition = "2021"
-build = "build.rs"
+build = "src/build.rs"
 
 [dependencies]
 windows-service = "0.7.0"

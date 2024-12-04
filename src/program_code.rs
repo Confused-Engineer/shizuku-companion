@@ -1,3 +1,8 @@
+#![deny(clippy::unwrap_used)]
+#![deny(clippy::expect_used)]
+#![deny(clippy::panic)]
+#![deny(unused_must_use)]
+
 use std::os::windows::process::CommandExt;
 
 
@@ -35,7 +40,6 @@ fn parse_lines(lines: Vec<String>)
         {
             #[cfg(debug_assertions)]
             println!("{}", found);
-
 
             if found
             {
