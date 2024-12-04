@@ -34,17 +34,6 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Source: "adb.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "AdbWinApi.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "AdbWinUsbApi.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "etc1tool.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "fastboot.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "hprof-conv.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "libwinpthread-1.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "make_f2fs.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "make_f2fs_casefold.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "mke2fs.conf"; DestDir: "{app}"; Flags: ignoreversion
-Source: "mke2fs.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "NOTICE.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "source.properties"; DestDir: "{app}"; Flags: ignoreversion
-Source: "sqlite3.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "shizuku.exe"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
