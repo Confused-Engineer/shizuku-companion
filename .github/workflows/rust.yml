@@ -12,6 +12,7 @@ jobs:
       - name: build
         run: |
           cargo build --release
+          signtool.exe sign /tr http://timestamp.digicert.com /td sha256 /fd sha256 /a ".\target\release\shizuku.exe"
           Copy-Item -Path ".\target\release\shizuku.exe" -Destination ".\assets\adb\"
           Start-Process -FilePath "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" -ArgumentList @(".\assets\adb\Setup.iss") -NoNewWindow -Wait
 
